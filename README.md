@@ -1,3 +1,3 @@
 # eacpay-core
-SPV bitcoin C library
+SPV Earthcoin C library
 
