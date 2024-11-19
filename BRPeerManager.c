@@ -1230,8 +1230,8 @@ static void _peerRelayedBlock(void *info, BRMerkleBlock *block)
     // ignore block headers that are newer than one week before earliestKeyTime (it's a header if it has 0 totalTx)
     // and blocks with incorrect block version number
     if ( (block->timestamp < 1557824449 && (!(block->version == 1 ||  block->version == 2))) ||
-         (block->timestamp < 1613834892 && (!(block->version == 2 ||  block->version == 0x20000000))) || 
-         (block->timestamp > 1613834892 && (!(block->version == 0x205d0004 ||  block->version == 0x20000000))) || 
+         ((block->timestamp > 1557824449 && block->timestamp < 1613834892) && (!(block->version == 2 ||  block->version == 0x20000000))) || 
+         ((block->timestamp > 1613834892 && block->timestamp < 1618490499) && (!(block->version == 0x205d0004 ||  block->version == 0x20000000))) || 
          (block->timestamp > 1618490499 && (!(block->version == 0x205d0004 ||  block->version == 0x205d0104))) || 
          (block->totalTx == 0 && block->timestamp + 7*24*60*60 > manager->earliestKeyTime + 2*60*60)) {
         BRMerkleBlockFree(block);
